@@ -14,7 +14,7 @@
 	<div>
 		<%@include file="header.html"%>
 		<h2>Get Started</h2>
-		<h3>Welcome ${users.username}</h3>
+		<h3>Welcome ${uname.username}</h3>
 	</div>
 	<div>
 		<section>

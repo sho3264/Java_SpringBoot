@@ -24,9 +24,9 @@ import sho.homeinsurance.table.Users;
 public class HomeController implements ErrorController{
 	// Need to implement ErrorController for SpringBoot not to use 
 	// basicErrorController
-	
-	
-	
+
+
+
 	@Autowired
 	private UsersBusinessService usersService;
 	@Autowired
@@ -35,10 +35,10 @@ public class HomeController implements ErrorController{
 	private LocationsBusinessService locationsService;
 	@Autowired
 	private PropertiesBusinessService propertiesService;
-	
+
 	private List<String> errorList;
 
-	
+
 
 	@RequestMapping({"LoginPage","/"})
 	public ModelAndView showLoginPage()
@@ -60,7 +60,7 @@ public class HomeController implements ErrorController{
 			// Check if the password matches the username
 			if (password.contentEquals(user.getPassword()))
 			{
-				mav = new ModelAndView("redirect:GetStarted");
+				mav = new ModelAndView("redirect:GetStartedPage");
 				session.setAttribute("uname", user);
 				return mav;
 			}
@@ -94,35 +94,59 @@ public class HomeController implements ErrorController{
 	{
 		return new ModelAndView("RegisterPage");
 	}
-	
-	@RequestMapping(value="addUser",method=RequestMethod.POST)
+
+	@RequestMapping(value="AddUser",method=RequestMethod.POST)
 	public ModelAndView registerUser(@RequestParam("username")String username,
-			@RequestParam("password")String password)
+			@RequestParam("Password")String password, 
+			@RequestParam("ConfirmPassword")String confirm,
+			RedirectAttributes redirectAttribute)
 	{
-		Users u = new Users(username,password);
-		usersService.addUsers(u);
-		return new ModelAndView("redirect:LoginPage");
+		if (!password.contentEquals(confirm))
+		{
+			errorList = new ArrayList<String>();
+			errorList.add("Password Mismatch");
+			redirectAttribute.addAttribute("errorList",errorList);
+			return new ModelAndView("redirect:RegisterPage");
+		}
+		else
+		{
+			Users u = new Users(username,password);
+			usersService.addUsers(u);
+			return new ModelAndView("redirect:LoginPage");
+		}
 	}
 	
+	@RequestMapping("GetStartedPage")
+	public ModelAndView showGetStartedPage()
+	{
+		return new ModelAndView("GetStartedPage");
+	}
+
 	@RequestMapping("AdminPage")
 	public ModelAndView showAdminLoginPage()
 	{
 		return new ModelAndView("AdminPage");
 	}
-	
+
 	@RequestMapping("/error")
 	public String error()
 	{
 		return "Error Page";
 	}
-	
+
 	// Change error path
 	@Override
 	public String getErrorPath()
 	{
 		return "/error";
 	}
-	
+
+	@RequestMapping("Logout")
+	public ModelAndView logout(HttpSession session)
+	{
+		session.invalidate();
+		return new ModelAndView("redirect:LoginPage");
+	}
 
 
 

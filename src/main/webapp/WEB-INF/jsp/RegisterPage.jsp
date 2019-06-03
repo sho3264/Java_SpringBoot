@@ -31,5 +31,8 @@
 			</div>
 		</form>
 	</div>
+	<div>
+	<%@ include file="error.jsp" %>
+	</div>
 </body>
 </html>
