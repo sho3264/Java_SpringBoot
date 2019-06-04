@@ -3,10 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-{
-}
-</style>
+<%@ include file="style.html"%>
 <meta charset="ISO-8859-1">
 <title>Get Started</title>
 </head>
@@ -18,7 +15,17 @@
 	</div>
 	<div>
 		<section>
-		
+			<article>
+				<p></p>
+			</article>
+			<article>
+				<div>
+					<a href="GetQuote">Get Quote</a>
+				</div>
+				<div>
+					<a href="RetrieveQuote">Retrieve Quote</a>
+				</div>
+			</article>
 		</section>
 	</div>
 </body>

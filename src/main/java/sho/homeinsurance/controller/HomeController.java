@@ -116,6 +116,12 @@ public class HomeController implements ErrorController{
 		}
 	}
 	
+	@RequestMapping("GetQuotePage")
+	public ModelAndView showGetQuotePage()
+	{
+		return new ModelAndView("GetQuotePage");
+	}
+	
 	@RequestMapping("GetStartedPage")
 	public ModelAndView showGetStartedPage()
 	{
@@ -147,6 +153,7 @@ public class HomeController implements ErrorController{
 		session.invalidate();
 		return new ModelAndView("redirect:LoginPage");
 	}
+	
 
 
 
