@@ -128,6 +128,12 @@ public class HomeController implements ErrorController{
 		return new ModelAndView("GetStartedPage");
 	}
 
+	@RequestMapping("showHomeownerPage")
+	public ModelAndView showHomeownerPage()
+	{
+		return new ModelAndView("HomeownerPage");
+	}
+	
 	@RequestMapping("AdminPage")
 	public ModelAndView showAdminLoginPage()
 	{

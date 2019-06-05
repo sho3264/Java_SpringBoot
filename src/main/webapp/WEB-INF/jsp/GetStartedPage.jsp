@@ -20,7 +20,7 @@
 			</article>
 			<article>
 				<div>
-					<a href="GetQuote">Get Quote</a>
+					<a href="showHomeownerPage">Get Quote</a>
 				</div>
 				<div>
 					<a href="RetrieveQuote">Retrieve Quote</a>
