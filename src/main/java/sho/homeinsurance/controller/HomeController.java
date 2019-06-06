@@ -134,6 +134,18 @@ public class HomeController implements ErrorController{
 		return new ModelAndView("HomeownerPage");
 	}
 	
+	@RequestMapping(value="AddHomeowner", method=RequestMethod.POST)
+	public ModelAndView addHomeowner()
+	{
+		return new ModelAndView("redirect:LocationPage");
+	}
+	
+	@RequestMapping("LocationPage")
+	public ModelAndView showLocationPage()
+	{
+		return new ModelAndView("LocationPage");
+	}
+	
 	@RequestMapping("AdminPage")
 	public ModelAndView showAdminLoginPage()
 	{
